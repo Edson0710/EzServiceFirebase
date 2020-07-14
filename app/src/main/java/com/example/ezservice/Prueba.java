@@ -19,6 +19,7 @@ public class Prueba extends AppCompatActivity {
         setContentView(R.layout.activity_prueba);
         signout = findViewById(R.id.btn_signout);
 
+//Boton
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
