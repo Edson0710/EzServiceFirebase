@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegistroComun"></activity>
+        <activity android:name=".Prueba"></activity>
+        <activity android:name=".RegistroComun" />
         <activity android:name=".RegistrosOpciones" />
         <activity android:name=".MainActivity">
             <intent-filter>
