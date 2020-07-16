@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorGray"
+    tools:context=".MainFeed">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ly_cabecera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorYellowDark"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp">
+
+            <TextView
+                android:id="@+id/btn_nombreApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorYellowDark"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:text="@string/app_name"
+                android:textAllCaps="false"
+                />
+
+            <ImageView
+                android:tint="@color/colorPrimaryDark"
+                android:id="@+id/btn_messages"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:padding="12dp"
+                android:src="@drawable/ic_email"
+                />
+
+            <ImageView
+                android:tint="@color/colorPrimaryDark"
+                android:id="@+id/btn_search"
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:padding="12dp"
+                android:layout_toLeftOf="@id/btn_messages"
+                android:src="@drawable/ic_search"
+                />
+
+        </RelativeLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/viewpager"
+            android:layout_below="@+id/ly_cabecera"
+            android:layout_above="@id/ly_TabLayout"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/ly_TabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
