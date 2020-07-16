@@ -31,8 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_logo"
-        app:startIconDrawable="@drawable/ic_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:startIconDrawable="@drawable/ic_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_email"
@@ -104,13 +103,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btn_prueba"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ir a feed"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="42dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
