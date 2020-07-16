@@ -16,7 +16,8 @@
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/app_name"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tf_email"
@@ -102,6 +103,14 @@
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_prueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir a feed"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="42dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

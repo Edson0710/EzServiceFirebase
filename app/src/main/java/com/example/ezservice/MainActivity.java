@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_registro;
     EditText et_email, et_password;
     String email, password;
-    Button btn_signin;
+    Button btn_signin,btn_irFeed;
     Intent intent;
     ProgressDialog progressDialog;
     private FirebaseAuth auth;
@@ -49,8 +49,17 @@ public class MainActivity extends AppCompatActivity {
         et_password = findViewById(R.id.et_password);
         btn_signin = findViewById(R.id.btn_signin);
         progressDialog = new ProgressDialog(this);
+        btn_irFeed=findViewById(R.id.btn_prueba);
         //----------firebase
         auth = FirebaseAuth.getInstance();
+
+        btn_irFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), MainFeed.class);
+                startActivity(intent);
+            }
+        });
 
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
