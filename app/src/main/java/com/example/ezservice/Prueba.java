@@ -11,13 +11,14 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Prueba extends AppCompatActivity {
 
-    Button signout;
+    Button signout, lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prueba);
         signout = findViewById(R.id.btn_signout);
+        lista = findViewById(R.id.btn_lista);
 
         //wenas
 
@@ -30,6 +31,16 @@ public class Prueba extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        lista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TarjetasServidores.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 }
