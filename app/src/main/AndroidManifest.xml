@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TarjetasServidores"></activity>
         <activity android:name=".Fragment_Configuration" />
         <activity android:name=".Fragment_Lista" />
         <activity android:name=".Fragment_Solicitar" />
