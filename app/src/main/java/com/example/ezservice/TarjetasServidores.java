@@ -55,18 +55,34 @@ public class TarjetasServidores extends AppCompatActivity {
     }
 
     public void getDataFromFirebase(){
-        reference.child("Usuarios").addValueEventListener(new ValueEventListener() {
+        reference.child("Categorias/Categoria 1/Profesiones/Profesion 1/servidores").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                models.clear();
                 if (snapshot.exists()){
                     for (DataSnapshot ds: snapshot.getChildren()){
-                        String nombre = ds.child("nombre").getValue().toString();
-                        String imagen = ds.child("imageProfile").getValue().toString();
-                        models.add(new Tarjeta(nombre, imagen));
+                        String id = ds.child("id").getValue().toString();
+                        //String nombre = ds.child("nombre").getValue().toString();
+                        //models.add(new Tarjeta(nombre));
+                        reference.child("Servidores/"+id).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String nombre = snapshot.child("nombre").getValue().toString();
+                                Toast.makeText(TarjetasServidores.this, ""+nombre, Toast.LENGTH_SHORT).show();
+                                    models.add(new Tarjeta(nombre));
+                                    setupadapter(models);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        //String imagen = ds.child("imageProfile").getValue().toString();
+
                     }
-
-                    setupadapter(models);
-
+                        //setupadapter(models);
                 }
             }
 

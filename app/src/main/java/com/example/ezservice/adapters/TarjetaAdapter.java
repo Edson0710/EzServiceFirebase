@@ -73,7 +73,7 @@ public class TarjetaAdapter extends PagerAdapter {
         nombre.setText(models.get(position).getNombre());
         //Load image from Internet
 
-        Glide.with(context).load(models.get(position).getImagen()).into(imagen);
+        //Glide.with(context).load(models.get(position).getImagen()).into(imagen);
 
         /*comentarios.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,8 +7,8 @@ public class Tarjeta {
 
     public Tarjeta(){}
 
-    public Tarjeta(String nombre, String imagen) {
-        this.imagen = imagen;
+    public Tarjeta(String nombre) {
+        //this.imagen = imagen;
         this.nombre = nombre;
         //this.id = id;
     }
