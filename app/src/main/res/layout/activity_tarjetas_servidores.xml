@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".TarjetasServidores">
 
     <androidx.viewpager.widget.ViewPager
@@ -13,7 +14,11 @@
         android:overScrollMode="never"
         android:clipToPadding="false"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_contratar"
+        app:layout_constraintTop_toTopOf="parent"
+        
         android:background="@color/colorPrimaryDark"
         />
 
