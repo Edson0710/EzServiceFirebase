@@ -68,7 +68,6 @@ public class TarjetasServidores extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     String nombre = snapshot.child("nombre").getValue().toString();
-                                Toast.makeText(TarjetasServidores.this, ""+nombre, Toast.LENGTH_SHORT).show();
                                     models.add(new Tarjeta(nombre));
                                     setupadapter(models);
 
