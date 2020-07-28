@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
-            Intent intent = new Intent(getApplication(), Prueba.class);
+            Intent intent = new Intent(getApplication(), MainFeed.class);
             startActivity(intent);
         }
     }
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) { //Si el login es exitoso
                             Toast.makeText(MainActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplication(), Prueba.class);
+                            Intent intent = new Intent(getApplication(), MainFeed.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(MainActivity.this, "El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show();
