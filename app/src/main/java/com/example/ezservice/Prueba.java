@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Prueba extends AppCompatActivity {
 
-    Button signout, lista;
+    Button signout, lista, categoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class Prueba extends AppCompatActivity {
         setContentView(R.layout.activity_prueba);
         signout = findViewById(R.id.btn_signout);
         lista = findViewById(R.id.btn_lista);
-
+        categoria= findViewById(R.id.btn_categorias);
         //wenas
 
 //Boton
@@ -40,7 +40,13 @@ public class Prueba extends AppCompatActivity {
             }
         });
 
-
+        categoria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), TarjetasProfesiones.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
