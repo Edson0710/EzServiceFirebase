@@ -55,7 +55,7 @@ public class TarjetasServidores extends AppCompatActivity {
     }
 
     public void getDataFromFirebase(){
-        reference.child("Categorias/Categoria 1/Profesiones/Profesion 1/servidores").addValueEventListener(new ValueEventListener() {
+        reference.child("Categorias/Categoria 1/Profesiones/Profesion 1/servidores").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 models.clear();
@@ -64,7 +64,7 @@ public class TarjetasServidores extends AppCompatActivity {
                         String id = ds.child("id").getValue().toString();
                         //String nombre = ds.child("nombre").getValue().toString();
                         //models.add(new Tarjeta(nombre));
-                        reference.child("Servidores/"+id).addValueEventListener(new ValueEventListener() {
+                        reference.child("Servidores/"+id).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     String nombre = snapshot.child("nombre").getValue().toString();

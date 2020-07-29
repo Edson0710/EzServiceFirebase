@@ -1,4 +1,4 @@
-package com.example.ezservice;
+package com.example.ezservice.adapters;
 
 import java.util.ArrayList;
 import java.util.List;
