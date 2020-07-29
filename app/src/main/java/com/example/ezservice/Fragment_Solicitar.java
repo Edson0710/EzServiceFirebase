@@ -13,7 +13,7 @@ import android.widget.Button;
 
 public class Fragment_Solicitar extends Fragment {
     View view;
-    Button btn_list;
+    Button btn_list, btn_cat;
 
     public Fragment_Solicitar() {
     }
@@ -23,6 +23,7 @@ public class Fragment_Solicitar extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_solicitar,container,false);
         btn_list = view.findViewById(R.id.btn_lista);
+        btn_cat = view.findViewById(R.id.btn_cat);
 
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,13 @@ public class Fragment_Solicitar extends Fragment {
             }
         });
 
+        btn_cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), TarjetasCategorias.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }

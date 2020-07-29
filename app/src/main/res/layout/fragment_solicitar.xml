@@ -25,4 +25,15 @@
         android:layout_marginBottom="64dp"
         android:text="Lista"/>
 
+    <Button
+        android:id="@+id/btn_cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_lista"
+        android:layout_marginBottom="64dp"
+        android:text="Categorias"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
