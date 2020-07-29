@@ -33,15 +33,13 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.MyVi
     public CategoriaAdapter(List<Categoria> models, Context context){
         this.models = models;
         this.context = context;
-
-        option = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
 
         View view;
-        view = View.inflate(context, R.layout.activity_tarjetas_categorias, null);
+        view = View.inflate(context, R.layout.item_categoria, null);
 
 
         final MyViewHolder viewHolder = new MyViewHolder(view);
@@ -82,6 +80,6 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return models.size();
     }
 }
