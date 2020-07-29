@@ -43,7 +43,7 @@ public class Prueba extends AppCompatActivity {
         categoria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), TarjetasProfesiones.class);
+                Intent intent = new Intent(getApplicationContext(), TarjetasCategorias.class);
                 startActivity(intent);
             }
         });
