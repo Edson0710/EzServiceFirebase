@@ -10,6 +10,8 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -55,7 +57,6 @@ public class TarjetasCategorias extends AppCompatActivity {
                 if (snapshot.exists()){
                     for (DataSnapshot ds: snapshot.getChildren()){
                         String nombre = ds.child("Nombre").getValue().toString();
-                        Toast.makeText(TarjetasCategorias.this, ""+nombre, Toast.LENGTH_SHORT).show();
                         String imagen=ds. child("Imagen").getValue().toString();
                         models.add(new Categoria(nombre));
                         //setupadapter(models);
@@ -77,8 +78,9 @@ public class TarjetasCategorias extends AppCompatActivity {
 
         reciclerView = findViewById(R.id.Cat_reciclerView);
 
-        LinearLayoutManager LayouyManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        reciclerView.setLayoutManager(LayouyManager);
+        LinearLayoutManager LayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+        reciclerView.setLayoutManager(LayoutManager);
         reciclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

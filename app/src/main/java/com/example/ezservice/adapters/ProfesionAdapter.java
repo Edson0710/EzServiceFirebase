@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ezservice.R;
 import com.example.ezservice.TarjetasProfesiones;
+import com.example.ezservice.TarjetasServidores;
 import com.example.ezservice.models.Categoria;
 import com.example.ezservice.models.Profesion;
 
@@ -32,15 +33,13 @@ public class ProfesionAdapter extends RecyclerView.Adapter<ProfesionAdapter.MyVi
     public ProfesionAdapter(List<Profesion> models, Context context){
         this.models = models;
         this.context = context;
-
-        option = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
     }
 
     @Override
     public ProfesionAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
 
         View view;
-        view = View.inflate(context, R.layout.activity_tarjetas_profesiones, null);
+        view = View.inflate(context, R.layout.item_profesion, null);
 
 
         final ProfesionAdapter.MyViewHolder viewHolder = new ProfesionAdapter.MyViewHolder(view);
@@ -48,7 +47,7 @@ public class ProfesionAdapter extends RecyclerView.Adapter<ProfesionAdapter.MyVi
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(context, TarjetasProfesiones.class);
+                Intent i = new Intent(context, TarjetasServidores.class);
                 i.putExtra("profesion", models.get(viewHolder.getAdapterPosition()).getNombre());
                 context.startActivity(i);
 
@@ -81,6 +80,6 @@ public class ProfesionAdapter extends RecyclerView.Adapter<ProfesionAdapter.MyVi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return models.size();
     }
 }

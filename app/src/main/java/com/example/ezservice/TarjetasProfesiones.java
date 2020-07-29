@@ -59,7 +59,6 @@ public class TarjetasProfesiones extends AppCompatActivity {
                 if (snapshot.exists()){
                     for (DataSnapshot ds: snapshot.getChildren()){
                         String nombre = ds.child("nombre").getValue().toString();
-                        Toast.makeText(TarjetasProfesiones.this, ""+nombre, Toast.LENGTH_SHORT).show();
                         models.add(new Profesion(nombre));
                         //setupadapter(models);
                     }
