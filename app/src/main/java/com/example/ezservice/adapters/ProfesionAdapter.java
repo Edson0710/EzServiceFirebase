@@ -27,12 +27,14 @@ public class ProfesionAdapter extends RecyclerView.Adapter<ProfesionAdapter.MyVi
     private List<Profesion> models;
     private LayoutInflater layoutInflater;
     private Context context;
+    private String categoria;
     private RequestOptions option;
     DecimalFormat format1 = new DecimalFormat("#.##");
 
-    public ProfesionAdapter(List<Profesion> models, Context context){
+    public ProfesionAdapter(List<Profesion> models, Context context, String categoria){
         this.models = models;
         this.context = context;
+        this.categoria = categoria;
     }
 
     @Override
@@ -49,6 +51,7 @@ public class ProfesionAdapter extends RecyclerView.Adapter<ProfesionAdapter.MyVi
 
                 Intent i = new Intent(context, TarjetasServidores.class);
                 i.putExtra("profesion", models.get(viewHolder.getAdapterPosition()).getNombre());
+                i.putExtra("categoria", categoria);
                 context.startActivity(i);
 
             }
