@@ -35,7 +35,7 @@ public class TarjetasProfesiones extends AppCompatActivity {
     RecyclerView reciclerView;
     ProfesionAdapter adapter;
     List<Profesion> models = new ArrayList<>();
-    String consulta;
+    String consulta, categoria;
 
     FirebaseUser firebaseUser;
     DatabaseReference reference;
@@ -45,7 +45,7 @@ public class TarjetasProfesiones extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tarjetas_profesiones);
 
-        String categoria = getIntent().getStringExtra("categoria");
+        categoria = getIntent().getStringExtra("categoria");
         consulta = "Categorias/"+categoria+"/Profesiones/";
         reference = FirebaseDatabase.getInstance().getReference();
         getDataFromFirebase();
@@ -75,7 +75,7 @@ public class TarjetasProfesiones extends AppCompatActivity {
 
 
     public void setupadapter(List<Profesion> models) {
-        adapter = new ProfesionAdapter(models, this);
+        adapter = new ProfesionAdapter(models, this, categoria);
 
         reciclerView = findViewById(R.id.Prof_reciclerView);
         LinearLayoutManager LayouyManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

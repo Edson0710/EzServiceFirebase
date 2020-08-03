@@ -35,7 +35,7 @@ public class TarjetasServidores extends AppCompatActivity {
     TarjetaAdapter adapter;
     List<Tarjeta> models = new ArrayList<>();
     Button solicitar;
-
+    String categoria, profesion;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
 
@@ -46,6 +46,9 @@ public class TarjetasServidores extends AppCompatActivity {
         setContentView(R.layout.activity_tarjetas_servidores);
         solicitar = findViewById(R.id.btn_contratar);
 
+        categoria = getIntent().getStringExtra("categoria");
+        profesion = getIntent().getStringExtra("profesion");
+
         reference = FirebaseDatabase.getInstance().getReference();
 
         getDataFromFirebase();
@@ -55,7 +58,7 @@ public class TarjetasServidores extends AppCompatActivity {
     }
 
     public void getDataFromFirebase(){
-        reference.child("Categorias/Categoria 1/Profesiones/Profesion 1/servidores").addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.child("Categorias/"+categoria+"/Profesiones/"+profesion+"/servidores").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 models.clear();
