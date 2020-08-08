@@ -41,7 +41,8 @@ public class ProfesionAdapter extends RecyclerView.Adapter<ProfesionAdapter.MyVi
     public ProfesionAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
 
         View view;
-        view = View.inflate(context, R.layout.item_profesion, null);
+        view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_profesion, parent, false);
 
 
         final ProfesionAdapter.MyViewHolder viewHolder = new ProfesionAdapter.MyViewHolder(view);
