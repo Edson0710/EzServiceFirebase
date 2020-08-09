@@ -106,8 +106,7 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
 
         //Load image from Internet
 
-        //Glide.with(mContext2).load(mData2.get(position).getImagen()).apply(option3).into(holder.iv_imagen);
-        Glide.with(mContext).load(mData.get(position).getImagen()).into(holder.imagen);
+        //Glide.with(mContext).load(mData.get(position).getImagen()).into(holder.imagen);
 
     }
 
