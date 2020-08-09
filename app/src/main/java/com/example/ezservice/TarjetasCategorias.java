@@ -59,9 +59,9 @@ public class TarjetasCategorias extends AppCompatActivity {
                         String nombre = ds.child("Nombre").getValue().toString();
                         String imagen=ds. child("Imagen").getValue().toString();
                         models.add(new Categoria(nombre));
-                        //setupadapter(models);
+                        setupadapter(models);
                     }
-                    setupadapter(models);
+                    //setupadapter(models);
                 }
             }
 
@@ -75,7 +75,6 @@ public class TarjetasCategorias extends AppCompatActivity {
 
     public void setupadapter(List<Categoria> models) {
         adapter = new CategoriaAdapter(models, this);
-        Toast.makeText(this, "Hola", Toast.LENGTH_SHORT).show();
         reciclerView = findViewById(R.id.Cat_reciclerView);
 
         LinearLayoutManager LayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);

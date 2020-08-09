@@ -28,7 +28,6 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.MyVi
     private LayoutInflater layoutInflater;
     private Context context;
     private RequestOptions option;
-    DecimalFormat format1 = new DecimalFormat("#.##");
 
     public CategoriaAdapter(List<Categoria> models, Context context){
         this.models = models;
