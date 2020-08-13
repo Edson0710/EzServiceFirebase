@@ -7,7 +7,7 @@ public class ListaServidor {
 
     }
 
-    public ListaServidor(String nombre, String profesion){
+    public ListaServidor(String nombre, String profesion, String id){
         this.nombre = nombre;
         this.id = id;
         //this.imagen = imagen;

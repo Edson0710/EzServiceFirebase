@@ -39,8 +39,6 @@ public class PerfilServidores extends AppCompatActivity {
 
         getDataFromFirebase();
 
-        Toast.makeText(PerfilServidores.this, ""+nombre, Toast.LENGTH_SHORT).show();
-
     }
 
     public void getDataFromFirebase(){

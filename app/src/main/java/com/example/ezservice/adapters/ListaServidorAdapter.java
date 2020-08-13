@@ -1,6 +1,7 @@
 package com.example.ezservice.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.ContextMenu;
@@ -9,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.ezservice.PerfilServidores;
 import com.example.ezservice.R;
+import com.example.ezservice.TarjetasProfesiones;
 import com.example.ezservice.models.ListaServidor;
 
 import java.util.List;
@@ -44,6 +48,17 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
 
 
         final MyViewHolder viewHolder = new MyViewHolder(view);
+
+        viewHolder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(mContext, PerfilServidores.class);
+                i.putExtra("id", mData.get(viewHolder.getAdapterPosition()).getId());
+                mContext.startActivity(i);
+
+            }
+        });
         /*viewHolder.container3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +134,7 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
 
         TextView tv_nombre;
         TextView tv_profesion;
-        TextView tv_estado;
+        ConstraintLayout container;
         CircleImageView imagen;
         //LinearLayout container3;
 
@@ -129,6 +144,8 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
             tv_nombre = itemView.findViewById(R.id.tv_nombre);
             tv_profesion = itemView.findViewById(R.id.tv_profesion);
             imagen = itemView.findViewById(R.id.imagen);
+            container = itemView.findViewById(R.id.contenedor_servidor);
+
             //tv_estado = itemView.findViewById(R.id.lista_estado2);
             /*container3 = itemView.findViewById(R.id.container_lista);
             container3.setOnCreateContextMenuListener(this);*/
