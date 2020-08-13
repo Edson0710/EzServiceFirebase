@@ -53,13 +53,16 @@
         android:id="@+id/descripcionServidor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Trabajo"
-        android:textSize="15dp"
-        android:textColor="#000"
+        android:layout_marginTop="30dp"
+        android:text="Descripción"
+        android:textSize="25dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/nombreServidor"
         app:layout_constraintEnd_toEndOf="@id/nombreServidor"
         app:layout_constraintTop_toBottomOf="@id/superior"/>
+
+
 
 
 

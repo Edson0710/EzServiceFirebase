@@ -7,9 +7,7 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,10 +15,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ezservice.R;
 import com.example.ezservice.models.ListaServidor;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -31,7 +25,6 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
     private Context mContext;
     private List<ListaServidor> mData;
     private RequestOptions option3;
-    private FirebaseUser firebaseUser;
 
     public ListaServidorAdapter(Context mContext, List<ListaServidor> mData2) {
         this.mContext = mContext;
@@ -100,19 +93,11 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
 
         //holder.tv_id.setText(""+mData2.get(position).getId());
         holder.tv_nombre.setText(mData.get(position).getNombre());
         holder.tv_profesion.setText(mData.get(position).getProfesion());
-        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(mContext, "Funado: " + mData.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
-                deleteFromFirebase(position);
-            }
-        });
         /*holder.tv_estado.setText(mData2.get(position).getEstado());
         if (obtenerTipo() == 3){
             holder.tv_estado.setVisibility(View.INVISIBLE);
@@ -125,25 +110,17 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
 
     }
 
-    public void deleteFromFirebase(int position){
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Usuarios/"+firebaseUser.getUid()+"/Solicitados");
-        DatabaseReference currentUserBD = database.child(mData.get(position).getId());
-        currentUserBD.removeValue();
-    }
-
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
 
         TextView tv_nombre;
         TextView tv_profesion;
         TextView tv_estado;
         CircleImageView imagen;
-        Button btn_delete;
         //LinearLayout container3;
 
         public MyViewHolder(View itemView) {
@@ -152,13 +129,17 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
             tv_nombre = itemView.findViewById(R.id.tv_nombre);
             tv_profesion = itemView.findViewById(R.id.tv_profesion);
             imagen = itemView.findViewById(R.id.imagen);
-            btn_delete = itemView.findViewById(R.id.btn_delete);
             //tv_estado = itemView.findViewById(R.id.lista_estado2);
             /*container3 = itemView.findViewById(R.id.container_lista);
             container3.setOnCreateContextMenuListener(this);*/
 
         }
-        
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.add(this.getAdapterPosition(), 121, 0, "Delete");
+        }
+
     }
 
     /*public int obtenerTipo() {
