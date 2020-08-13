@@ -71,8 +71,7 @@ public class Fragment_Lista extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 String nombre = snapshot.child("nombre").getValue().toString();
                                 String profesion = snapshot.child("profesion").getValue().toString();
-                                String id = snapshot.child("id").getValue().toString();
-                                models.add(new ListaServidor(nombre, profesion, id));
+                                models.add(new ListaServidor(nombre, profesion));
                                 setupadapter(models);
 
                             }
