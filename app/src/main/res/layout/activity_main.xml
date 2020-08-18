@@ -7,6 +7,14 @@
     android:background="#fff"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btn_prueba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="prueba"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
 
     <ImageView
         android:id="@+id/img_logo"
