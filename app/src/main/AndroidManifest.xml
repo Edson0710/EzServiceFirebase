@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PerfilServidores"></activity>
+        <activity android:name=".LoginServidores"></activity>
+        <activity android:name=".PerfilServidores" />
         <activity android:name=".TarjetasProfesiones" />
         <activity android:name=".TarjetasCategorias" />
         <activity android:name=".TarjetasServidores" />

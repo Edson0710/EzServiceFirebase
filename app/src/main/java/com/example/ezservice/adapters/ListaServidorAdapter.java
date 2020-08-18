@@ -8,7 +8,9 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +21,10 @@ import com.example.ezservice.PerfilServidores;
 import com.example.ezservice.R;
 import com.example.ezservice.TarjetasProfesiones;
 import com.example.ezservice.models.ListaServidor;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -29,6 +35,7 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
     private Context mContext;
     private List<ListaServidor> mData;
     private RequestOptions option3;
+    private FirebaseUser firebaseUser;
 
     public ListaServidorAdapter(Context mContext, List<ListaServidor> mData2) {
         this.mContext = mContext;
@@ -108,16 +115,20 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         //holder.tv_id.setText(""+mData2.get(position).getId());
         holder.tv_nombre.setText(mData.get(position).getNombre());
         holder.tv_profesion.setText(mData.get(position).getProfesion());
-        /*holder.tv_estado.setText(mData2.get(position).getEstado());
-        if (obtenerTipo() == 3){
-            holder.tv_estado.setVisibility(View.INVISIBLE);
-            holder.tv_estado2.setVisibility(View.INVISIBLE);
-        }*/
+
+        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(mContext, "Funado: " + mData.get(position).getId().toString(), Toast.LENGTH_SHORT).show();
+                deleteFromFirebase(position);
+            }
+        });
 
         //Load image from Internet
 
@@ -136,12 +147,14 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
         TextView tv_profesion;
         ConstraintLayout container;
         CircleImageView imagen;
+        Button btn_delete;
         //LinearLayout container3;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             tv_nombre = itemView.findViewById(R.id.tv_nombre);
+            btn_delete = itemView.findViewById(R.id.btn_delete);
             tv_profesion = itemView.findViewById(R.id.tv_profesion);
             imagen = itemView.findViewById(R.id.imagen);
             container = itemView.findViewById(R.id.contenedor_servidor);
@@ -157,6 +170,13 @@ public class ListaServidorAdapter extends RecyclerView.Adapter<ListaServidorAdap
             menu.add(this.getAdapterPosition(), 121, 0, "Delete");
         }
 
+    }
+
+    public void deleteFromFirebase(int position){
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Usuarios/"+firebaseUser.getUid()+"/Solicitados");
+        DatabaseReference currentUserBD = database.child(mData.get(position).getId());
+        currentUserBD.removeValue();
     }
 
     /*public int obtenerTipo() {
