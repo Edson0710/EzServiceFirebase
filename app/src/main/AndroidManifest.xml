@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FragmentS_Jobs"></activity>
+        <activity android:name=".FragmentS_Configuration" />
+        <activity android:name=".FragmentS_Lista" />
         <activity android:name=".LoginServidores"></activity>
         <activity android:name=".PerfilServidores" />
         <activity android:name=".TarjetasProfesiones" />

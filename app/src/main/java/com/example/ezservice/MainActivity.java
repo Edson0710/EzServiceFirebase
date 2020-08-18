@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_registro,tv_login_servidores;
     EditText et_email, et_password;
     String email, password;
-    Button btn_signin;
+    Button btn_signin, btn_prueba;
     Intent intent;
     ProgressDialog progressDialog;
     private FirebaseAuth auth;
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             Intent intent = new Intent(getApplication(), MainFeed.class);
+            intent.putExtra("user_type", 1);
             startActivity(intent);
         }
     }
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         et_email = findViewById(R.id.et_email);
         et_password = findViewById(R.id.et_password);
         btn_signin = findViewById(R.id.btn_signin);
+        btn_prueba = findViewById(R.id.btn_prueba);
         progressDialog = new ProgressDialog(this);
         //----------firebase
         auth = FirebaseAuth.getInstance();
@@ -58,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validarDatos();
+            }
+        });
+
+        btn_prueba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), MainFeed.class);
+                intent.putExtra("user_type", 2);
+                startActivity(intent);
             }
         });
 
@@ -101,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) { //Si el login es exitoso
                             Toast.makeText(MainActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplication(), MainFeed.class);
+                            intent.putExtra("user_type", 1);
                             startActivity(intent);
                         } else {
                             Toast.makeText(MainActivity.this, "El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show();

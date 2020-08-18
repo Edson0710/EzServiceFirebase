@@ -171,6 +171,7 @@ public class RegistroComun extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Intent intent = new Intent(RegistroComun.this, MainFeed.class);
+                        intent.putExtra("user_type", 1);
                         progressDialog.dismiss();
                         Toast.makeText(RegistroComun.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
                         startActivity(intent);

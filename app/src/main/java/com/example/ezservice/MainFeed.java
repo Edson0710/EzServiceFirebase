@@ -24,11 +24,14 @@ public class MainFeed extends AppCompatActivity {
     TabLayout tabLayout;
     int[] tabIcons={R.drawable.ic_search,R.drawable.ic_profile,R.drawable.ic_configuration};
     ViewPager viewPager;
+    int user_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+
+        user_type = getIntent().getIntExtra("user_type", 0);
 
         //Relaciones------------------------
         btn_NombreApp = findViewById(R.id.btn_nombreApp);
@@ -78,9 +81,17 @@ public class MainFeed extends AppCompatActivity {
 
     private void loadViewPager(TabLayout tablayout){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Fragment_Solicitar(),"");
-        adapter.addFragment(new Fragment_Lista(),"");
-        adapter.addFragment(new Fragment_Configuration(),"");
+        if (user_type == 1){
+            adapter.addFragment(new Fragment_Solicitar(),"");
+            adapter.addFragment(new Fragment_Lista(),"");
+            adapter.addFragment(new Fragment_Configuration(),"");
+        }
+        if (user_type == 2){
+            adapter.addFragment(new FragmentS_Jobs(),"");
+            adapter.addFragment(new FragmentS_Lista(),"");
+            adapter.addFragment(new FragmentS_Configuration(),"");
+        }
+
         viewPager.setAdapter(adapter);
         tablayout.setupWithViewPager(viewPager);
     }
