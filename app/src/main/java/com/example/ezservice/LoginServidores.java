@@ -57,6 +57,7 @@ public class LoginServidores extends AppCompatActivity {
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 validarDatos();
             }
         });
@@ -92,6 +93,7 @@ public class LoginServidores extends AppCompatActivity {
                         if (task.isSuccessful()) { //Si el login es exitoso
                             Toast.makeText(LoginServidores.this, "Bienvenido Usuario servidor", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplication(), MainFeed.class);
+                            intent.putExtra("user_type", 2);
                             startActivity(intent);
                         } else {
                             Toast.makeText(LoginServidores.this, "El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show();
